@@ -13,6 +13,7 @@ const app  = express();
 
 
 const port = process.env.PORT || 5000;
+console.log(process.env.port);
 app.use(
     cors({
       origin: "https://milkshop-frontend.vercel.app", // Allow only your frontend
@@ -32,5 +33,6 @@ app.use('/products',productRouter)
 app.use('/transactions',transactionRouter)
 
 app.listen(port, () => {
-    console.log(`🚀 Server is running on http://localhost:${port}`);
+    console.log(`🚀 Server is running 
+        `);
 })

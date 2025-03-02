@@ -13,16 +13,18 @@ const app  = express();
 
 
 const port = process.env.PORT || 5000;
-console.log(process.env.port);
-app.use(
-    cors({
-      origin: "https://milkshop-frontend.vercel.app", // Allow only your frontend
-      methods: "GET,POST,PUT,DELETE", // Allowed HTTP methods
-      credentials: true, // Allow cookies & authentication headers
-    })
-  );
+//console.log(process.env.port);
+// app.use(
+//     cors({
+//       origin: "https://milkshop-frontend.vercel.app", // Allow only your frontend
+//       methods: "GET,POST,PUT,DELETE", // Allowed HTTP methods
+//       credentials: true, // Allow cookies & authentication headers
+//     })
+//   );
+app.use(cors());
   
   app.get('/', (req, res) => {
+    console.log("Backend is running")
     res.json({ message: "Backend is running successfully!" });
 });
 
@@ -33,6 +35,5 @@ app.use('/products',productRouter)
 app.use('/transactions',transactionRouter)
 
 app.listen(port, () => {
-    console.log(`🚀 Server is running 
-        `);
+    console.log(`🚀 Server is running `);
 })

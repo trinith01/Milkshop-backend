@@ -5,10 +5,14 @@ import employeeRouter from './Routes/employee_Routes.js';
 import productRouter from './Routes/product_Routes.js';
 import cors from 'cors';
 import transactionRouter from './Routes/transaction_Routes.js';
+import dotenv from 'dotenv'; 
 
+
+dotenv.config();  
 const app  = express();
 
-const port = 5000;
+
+const port = process.env.PORT || 5000;
 app.use(
     cors({
       origin: "https://milkshop-frontend.vercel.app", // Allow only your frontend
@@ -17,10 +21,10 @@ app.use(
     })
   );
   
-app.get('/', (req, res) => {
-    console.log('Hello World');
-    res.send('Hello World');
-})
+  app.get('/', (req, res) => {
+    res.json({ message: "Backend is running successfully!" });
+});
+
 connectDb()
 app.use(express.json());
 app.use('/employees',employeeRouter)
